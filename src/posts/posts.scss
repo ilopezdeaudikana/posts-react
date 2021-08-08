@@ -1,0 +1,15 @@
+.posts-list {
+  width: 600px;
+  .list-container {
+    margin-top: 2rem;
+  }
+  .card {
+    margin-bottom: 1.5rem;
+    .regular {
+      font-weight: 300;
+    }
+    .title {
+      font-weight: 700;
+    }
+  }
+}

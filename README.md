@@ -1,3 +1,7 @@
+# Posts
+
+This app is a React replica of the Posts app on this very same "folder". The stack I used for this one is `React`, `Typescript`, `React hooks`, `Redux`, `Sagas` and `Material UI`.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
