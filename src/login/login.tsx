@@ -21,7 +21,7 @@ export const Login = () => {
     dispatch(FetchUser(email));
   };
   return (
-    <form onSubmit={handleSubmit} className='login'>
+    <form onSubmit={handleSubmit} className='login' data-testid='loginForm'>
       <FormControl>
         <InputLabel htmlFor='email'>Email address</InputLabel>
         <Input
@@ -31,7 +31,12 @@ export const Login = () => {
         />
         <FormHelperText id='helper-text'>Try Sincere@april.biz.</FormHelperText>
       </FormControl>
-      <Button className='submit' variant='outlined' color='primary' type='submit'>
+      <Button
+        className='submit'
+        variant='outlined'
+        color='primary'
+        type='submit'
+      >
         Log In
       </Button>
     </form>
