@@ -3,7 +3,7 @@ import { Post, Action } from '../../models/models';
 import { PostsAppActions, SetPosts, SetNewPost } from '../actions/actions';
 import { getPosts, createPost } from '../../api/api';
 
-function* fetchPosts() {
+export function* fetchPosts() {
   try {
     const posts: Post[] = yield call(getPosts);
     yield put(SetPosts(posts));
@@ -13,7 +13,7 @@ function* fetchPosts() {
   }
 }
 
-function* newPost(action: Action) {
+export function* newPost(action: Action) {
   try {
     const post: { id: number } = yield call(createPost, action.payload);
     yield put(SetNewPost({ ...post, ...action.payload }));

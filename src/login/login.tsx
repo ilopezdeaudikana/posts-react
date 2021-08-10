@@ -20,6 +20,7 @@ export const Login = () => {
     e.preventDefault();
     dispatch(FetchUser(email));
   };
+
   return (
     <form onSubmit={handleSubmit} className='login' data-testid='loginForm'>
       <FormControl>
@@ -28,14 +29,17 @@ export const Login = () => {
           id='email'
           aria-describedby='helper-text'
           onChange={handleChange}
+          required
         />
         <FormHelperText id='helper-text'>Try Sincere@april.biz.</FormHelperText>
       </FormControl>
       <Button
+        role='button'
         className='submit'
         variant='outlined'
         color='primary'
         type='submit'
+        disabled={!email}
       >
         Log In
       </Button>

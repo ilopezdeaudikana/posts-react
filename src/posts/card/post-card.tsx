@@ -7,7 +7,7 @@ export const PostCard = (props: { post: Post }) => {
   return (
     <Card className='card'>
       <CardContent>
-        {username && <p className='username'>{username}</p>}
+        {username && <p data-testid='username' className='username'>{username}</p>}
         <p className='title'>{title}</p>
         <p className='regular'>{body}</p>
       </CardContent>

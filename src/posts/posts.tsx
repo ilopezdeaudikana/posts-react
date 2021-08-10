@@ -6,7 +6,7 @@ import { MyPosts } from './mine/my-posts';
 import { OthersPosts } from './others/others-posts';
 
 import history from '../history';
-import { FetchPosts, FetchUsers } from '../store/actions/actions';
+import { FetchPosts } from '../store/actions/actions';
 import { State } from '../models/models';
 import './posts.scss';
 
@@ -15,7 +15,6 @@ export const Posts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(FetchPosts());
-    dispatch(FetchUsers());
   }, [dispatch]);
 
   const { posts, user } = useSelector((state: State) => state);

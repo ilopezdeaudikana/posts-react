@@ -1,6 +1,10 @@
 # Posts
 
-This app is a React replica of the Posts app on this very same "folder". The stack I used for this one is `React`, `Typescript`, `React hooks`, `Redux`, `Sagas` and `Material UI`.
+This app is a React tech assesment that I was requested to do. It has a very rudimentary login system and a couple of routes where a list of posts are displayed combined with the information of a set of users requested from another endpoint. 
+
+I added a dummy guard to check if there's any user in the store. This causes that on every reload you will be redirected to the login page. There's no log out button because it wasn't requested. Using the back button on the browser also breaks the Log in, because even if users input bad emails the user endpoint always return 200s, and if they manage to log in once they will be able to bypass the Log in page, no matter what the email they type.
+
+The stack I used for this one is `React`, `Typescript`, `React hooks`, `Redux`, `Sagas`, `Jest` and `Material UI`.
 
 # Getting Started with Create React App
 

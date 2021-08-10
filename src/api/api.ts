@@ -8,9 +8,9 @@ export const getUsers = async (): Promise<User[]> => {
   return users;
 };
 
-export const getUser = async (email: string): Promise<User> => {
+export const getUser = async (email: string): Promise<User[]> => {
   const response: Response = await fetch(`${server}/users?email=${email}`);
-  const users: User = await response.json();
+  const users: User[] = await response.json();
   return users;
 };
 
@@ -20,7 +20,7 @@ export const getPosts = async (): Promise<Post[]> => {
   return posts;
 };
 
-export const createPost = async (post: Post): Promise<Post> => {
+export const createPost = async (post: Post): Promise<{ id: number }> => {
   const response: Response = await fetch(`${server}/posts`, {
     method: 'POST',
     mode: 'cors',
@@ -29,6 +29,6 @@ export const createPost = async (post: Post): Promise<Post> => {
     },
     body: JSON.stringify(post),
   });
-  const apiPost: Post = await response.json();
+  const apiPost: { id: number } = await response.json();
   return apiPost;
 };

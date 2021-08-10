@@ -1,22 +1,38 @@
 import { Login } from './login';
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 afterEach(cleanup);
 
 describe('Login Form', () => {
-  it('Inputing text updates the state', async () => {
+  it('Inputing text enables the button', async () => {
     const mockStore = configureStore();
+    
     const store = mockStore({});
-    const { getByLabelText } = render(
+    const dispatchSpy = jest.spyOn(store, 'dispatch');
+    const { getByRole } = render(
       <Provider store={store}>
         <Login />
       </Provider>
     );
-    const input = getByLabelText('Email address');
-    fireEvent.change(input, {
-      currentTarget: { value: 'Text' },
-    });
-    expect(input).toBeInTheDocument();
+    const input = getByRole('textbox');
+    userEvent.type(input, 'a')
+    const submit = getByRole('button');
+    await waitFor(() => expect(submit).not.toBeDisabled());
+    userEvent.click(submit);
+    await waitFor(() => expect(dispatchSpy).toHaveBeenCalled());
+  });
+
+  it('Submit button should be disabled', async () => {
+    const mockStore = configureStore();
+    const store = mockStore({});
+    const { getByRole } = render(
+      <Provider store={store}>
+        <Login />
+      </Provider>
+    );
+    const submit = getByRole('button');
+    expect(submit).toBeDisabled();
   });
 });

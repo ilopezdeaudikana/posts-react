@@ -9,6 +9,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { CreatePost } from '../../store/actions/actions';
 import './add-post.scss';
+
 export const NewPost = (props: { userId: number }) => {
   const { userId } = props;
   const [title, setTitle] = useState('');
@@ -34,6 +35,7 @@ export const NewPost = (props: { userId: number }) => {
   const showForm = () => {
     setVisible(!visible);
   };
+
   return (
     <Fragment>
       <div className='show-form'>
@@ -42,7 +44,7 @@ export const NewPost = (props: { userId: number }) => {
         </Button>
       </div>
       {visible && (
-        <form className='add-post' onSubmit={handleSubmit}>
+        <form data-testid='form' className='add-post' onSubmit={handleSubmit}>
           <FormControl className='item'>
             <InputLabel htmlFor='title'>Title</InputLabel>
             <Input id='title' onChange={handleTitleChange} />
@@ -56,7 +58,14 @@ export const NewPost = (props: { userId: number }) => {
               minRows={3}
             />
           </FormControl>
-          <Button className='save-button' variant='outlined' color='primary' type='submit'>
+          <Button
+            role='button'
+            disabled={!title && !body}
+            className='save-button'
+            variant='outlined'
+            color='primary'
+            type='submit'
+          >
             Save Post
           </Button>
         </form>
