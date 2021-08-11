@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { CreatePost } from '../../store/actions/actions';
-import './add-post.scss';
+import styles from './new-post.module.scss';
 
 export const NewPost = (props: { userId: number }) => {
   const { userId } = props;
@@ -38,18 +38,18 @@ export const NewPost = (props: { userId: number }) => {
 
   return (
     <Fragment>
-      <div className='show-form'>
+      <div className={styles.showForm}>
         <Button variant='outlined' color='primary' onClick={() => showForm()}>
           Create new Post
         </Button>
       </div>
       {visible && (
-        <form data-testid='form' className='add-post' onSubmit={handleSubmit}>
-          <FormControl className='item'>
+        <form data-testid='form' className={styles.addPost} onSubmit={handleSubmit}>
+          <FormControl className={styles.item}>
             <InputLabel htmlFor='title'>Title</InputLabel>
             <Input id='title' onChange={handleTitleChange} />
           </FormControl>
-          <FormControl className='item'>
+          <FormControl className={styles.item}>
             <TextareaAutosize
               id='body'
               aria-label='Post body textarea'
@@ -61,7 +61,7 @@ export const NewPost = (props: { userId: number }) => {
           <Button
             role='button'
             disabled={!title && !body}
-            className='save-button'
+            className={styles.saveButton}
             variant='outlined'
             color='primary'
             type='submit'

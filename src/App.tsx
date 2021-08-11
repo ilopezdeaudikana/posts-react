@@ -4,13 +4,13 @@ import history from './history';
 import { Login } from './login/login';
 import { Posts } from './posts/posts';
 import { store } from './store/store';
-import './App.scss';
+import styles from './App.module.scss';
 
 function App() {
   return (
     <Router history={history}>
       <Provider store={store}>
-        <div data-testid='App' className='container'>
+        <div data-testid='App' className={styles.container}>
           <Switch>
             <Route exact path='/' component={Login} />
             <Route path='/posts' component={Posts}></Route>

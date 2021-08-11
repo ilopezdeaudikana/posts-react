@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { FetchUser } from '../store/actions/actions';
-import './login.scss';
+import styles from './login.module.scss';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ export const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='login' data-testid='loginForm'>
+    <form onSubmit={handleSubmit} className={styles.login} data-testid='loginForm'>
       <FormControl>
         <InputLabel htmlFor='email'>Email address</InputLabel>
         <Input
@@ -35,7 +35,7 @@ export const Login = () => {
       </FormControl>
       <Button
         role='button'
-        className='submit'
+        className={styles.submit}
         variant='outlined'
         color='primary'
         type='submit'

@@ -8,7 +8,7 @@ import { OthersPosts } from './others/others-posts';
 import history from '../history';
 import { FetchPosts } from '../store/actions/actions';
 import { State } from '../models/models';
-import './posts.scss';
+import styles from './posts.module.scss';
 
 export const Posts = () => {
   const [value, setValue] = useState(0);
@@ -30,7 +30,7 @@ export const Posts = () => {
 
   return user && user.id ? (
     <Fragment>
-      <div className='posts-list'>
+      <div className={styles.postsList}>
         <Tabs
           value={value}
           indicatorColor='primary'
@@ -41,7 +41,7 @@ export const Posts = () => {
           <Tab label='Mine' />
           <Tab label='Others' />
         </Tabs>
-        <div className='list-container'>
+        <div className={styles.listContainer}>
           <Route path='/posts/mine'>
             <MyPosts posts={posts} id={user.id} />
           </Route>
