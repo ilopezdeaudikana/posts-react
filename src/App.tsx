@@ -1,6 +1,5 @@
 import { Provider } from 'react-redux';
-import { Router, Switch, Route } from 'react-router-dom';
-import history from './history';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Login } from './login/login';
 import { Posts } from './posts/posts';
 import { store } from './store/store';
@@ -8,7 +7,7 @@ import styles from './App.module.scss';
 
 function App() {
   return (
-    <Router history={history}>
+    <BrowserRouter>
       <Provider store={store}>
         <div data-testid='App' className={styles.container}>
           <Switch>
@@ -17,7 +16,7 @@ function App() {
           </Switch>
         </div>
       </Provider>
-    </Router>
+    </BrowserRouter>
   );
 }
 export default App;

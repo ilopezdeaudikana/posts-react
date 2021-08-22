@@ -2,17 +2,12 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { User, Action } from '../../models/models';
 import { PostsAppActions, SetUser, SetUsers } from '../actions/actions';
 import { getUser, getUsers } from '../../api/api';
-import history from '../../history';
-
-const forwardTo = (location: string) => {
-  history.push(location);
-};
 
 export function* fetchUser(action: Action) {
   try {
-    const user: User[] = yield call(getUser, action.payload);
+    const user: User[] = yield call(getUser, action.payload.email);
     yield put(SetUser(user[0]));
-    yield call(forwardTo, `/posts/mine`);
+    yield call(action.payload.history.push, `/posts/mine`);
   } catch (e) {
     yield put({ type: PostsAppActions.AUTH_FAILURE, message: e.message });
   }

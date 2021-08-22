@@ -58,7 +58,10 @@ export const FetchUsers = () => ({
   payload: null,
 });
 
-export const FetchUser = (email: string) => ({
+export const FetchUser = (obj: {
+  email: string;
+  history: { push: (path: string) => void };
+}) => ({
   type: PostsAppActions.FETCH_USER,
-  payload: email,
+  payload: obj,
 });

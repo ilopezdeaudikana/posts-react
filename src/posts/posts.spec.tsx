@@ -2,9 +2,9 @@ import { Posts } from './posts';
 import { render, cleanup, waitFor } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import * as reactRedux from 'react-redux';
-import history from '../history';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {createMemoryHistory} from 'history';
 
 afterEach(cleanup);
 
@@ -12,8 +12,10 @@ let mockStore: any;
 let store: any;
 let useSelectorMock: any;
 let useDispatchMock: any;
+let history: any;
 describe('Posts component', () => {
   beforeEach(() => {
+    history = createMemoryHistory()
     mockStore = configureStore();
     store = mockStore({});
     const mockedDispatch = jest.fn();

@@ -1,11 +1,10 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs, Tab } from '@material-ui/core';
 import { MyPosts } from './mine/my-posts';
 import { OthersPosts } from './others/others-posts';
 
-import history from '../history';
 import { FetchPosts } from '../store/actions/actions';
 import { State } from '../models/models';
 import styles from './posts.module.scss';
@@ -13,6 +12,7 @@ import styles from './posts.module.scss';
 export const Posts = () => {
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
+  const history = useHistory();
   useEffect(() => {
     dispatch(FetchPosts());
   }, [dispatch]);

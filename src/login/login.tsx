@@ -7,18 +7,20 @@ import {
   InputLabel,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { FetchUser } from '../store/actions/actions';
 import styles from './login.module.scss';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(e.currentTarget.value);
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(FetchUser(email));
+    dispatch(FetchUser({email, history}));
   };
 
   return (
