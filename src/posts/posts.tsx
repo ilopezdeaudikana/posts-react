@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { Outlet, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs, Tab } from '@material-ui/core';
 import { MyPosts } from './mine/my-posts';
@@ -12,7 +12,7 @@ import styles from './posts.module.scss';
 export const Posts = () => {
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(FetchPosts());
   }, [dispatch]);
@@ -25,7 +25,7 @@ export const Posts = () => {
     }
     const routes = ['mine', 'others'];
     setValue(newValue);
-    history.push(`/posts/${routes[newValue]}`);
+    navigate(`/posts/${routes[newValue]}`);
   };
 
   return user && user.id ? (
@@ -42,17 +42,12 @@ export const Posts = () => {
           <Tab label='Others' />
         </Tabs>
         <div className={styles.listContainer}>
-          <Route path='/posts/mine'>
-            <MyPosts posts={posts} id={user.id} />
-          </Route>
-          <Route path='/posts/others'>
-            <OthersPosts posts={posts} id={user.id} />
-          </Route>
+          <Outlet context={[posts, user.id]}/>
         </div>
       </div>
     </Fragment>
   ) : (
-    <Redirect
+    <Navigate
       to={{
         pathname: '/',
       }}

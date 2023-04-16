@@ -17,7 +17,7 @@ describe('fetchUser', () => {
         dispatch: (action) => dispatched.push(action),
       },
       fetchUser as any,
-      { payload: { email: 'some@email.com', history: { push: jest.fn() } } }
+      { payload: { email: 'some@email.com', history: jest.fn()} }
     );
 
     expect(requestUser).toHaveBeenCalledTimes(1);

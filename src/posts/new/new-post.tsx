@@ -47,11 +47,12 @@ export const NewPost = (props: { userId: number }) => {
         <form data-testid='form' className={styles.addPost} onSubmit={handleSubmit}>
           <FormControl className={styles.item}>
             <InputLabel htmlFor='title'>Title</InputLabel>
-            <Input id='title' onChange={handleTitleChange} />
+            <Input data-testid='title' id='title' onChange={handleTitleChange} />
           </FormControl>
           <FormControl className={styles.item}>
             <TextareaAutosize
               id='body'
+              data-testid='body'
               aria-label='Post body textarea'
               placeholder='Post body'
               onChange={handleBodyChange}
@@ -60,6 +61,7 @@ export const NewPost = (props: { userId: number }) => {
           </FormControl>
           <Button
             role='button'
+            data-testid='submit'
             disabled={!title && !body}
             className={styles.saveButton}
             variant='outlined'

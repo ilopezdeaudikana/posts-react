@@ -5,9 +5,10 @@ import { mergeUsersAndPosts } from '../merge-users-and-posts';
 import { FetchUsers } from '../../store/actions/actions';
 
 import { PostCard } from '../card/post-card';
+import { useOutletContext } from 'react-router-dom';
 
-export const OthersPosts = (props: { posts: PostFromApi[]; id: number }) => {
-  const { posts, id } = props;
+export const OthersPosts = () => {
+  const [posts, id] = useOutletContext<[posts: PostFromApi[], id: number ]>()
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(FetchUsers());

@@ -1,3 +1,4 @@
+import { NavigateFunction } from 'react-router-dom';
 import { Post, User, PostFromApi } from '../../models/models';
 
 export class PostsAppActions {
@@ -60,7 +61,7 @@ export const FetchUsers = () => ({
 
 export const FetchUser = (obj: {
   email: string;
-  history: { push: (path: string) => void };
+  history: NavigateFunction;
 }) => ({
   type: PostsAppActions.FETCH_USER,
   payload: obj,

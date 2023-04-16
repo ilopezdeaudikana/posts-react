@@ -7,8 +7,8 @@ export function* fetchUser(action: Action) {
   try {
     const user: User[] = yield call(getUser, action.payload.email);
     yield put(SetUser(user[0]));
-    yield call(action.payload.history.push, `/posts/mine`);
-  } catch (e) {
+    yield call(action.payload.history, `/posts/mine`);
+  } catch (e: any) {
     yield put({ type: PostsAppActions.AUTH_FAILURE, message: e.message });
   }
 }

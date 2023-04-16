@@ -7,13 +7,13 @@ import {
   InputLabel,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FetchUser } from '../store/actions/actions';
 import styles from './login.module.scss';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(e.currentTarget.value);
