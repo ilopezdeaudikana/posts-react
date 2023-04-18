@@ -1,9 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Outlet, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs, Tab } from '@material-ui/core';
-import { MyPosts } from './mine/my-posts';
-import { OthersPosts } from './others/others-posts';
 
 import { FetchPosts } from '../store/actions/actions';
 import { State } from '../models/models';
