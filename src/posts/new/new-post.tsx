@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import {
   FormControl,
   Input,
@@ -37,7 +37,7 @@ export const NewPost = (props: { userId: number }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <div className={styles.showForm}>
         <Button variant='outlined' color='primary' onClick={() => showForm()}>
           Create new Post
@@ -72,6 +72,6 @@ export const NewPost = (props: { userId: number }) => {
           </Button>
         </form>
       )}
-    </Fragment>
+    </>
   );
 };

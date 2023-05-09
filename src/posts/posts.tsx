@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs, Tab } from '@material-ui/core';
@@ -27,7 +27,7 @@ export const Posts = () => {
   };
 
   return user && user.item.id ? (
-    <Fragment>
+    <>
       <div className={styles.postsList}>
         <Tabs
           value={value}
@@ -43,7 +43,7 @@ export const Posts = () => {
           <Outlet context={[posts, user.item.id]}/>
         </div>
       </div>
-    </Fragment>
+    </>
   ) : (
     <Navigate
       to={{

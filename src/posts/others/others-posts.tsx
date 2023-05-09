@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { State, PostFromApi, Post } from '../../models/models';
 import { mergeUsersAndPosts } from '../merge-users-and-posts';
@@ -17,10 +17,10 @@ export const OthersPosts = () => {
   const list: Post[] = mergeUsersAndPosts(users.list, posts.list, id);
 
   return (
-    <Fragment>
+    <>
       {list.map((post: Post) => (
         <PostCard key={post.id} post={post} />
       ))}
-    </Fragment>
+    </>
   );
 };
