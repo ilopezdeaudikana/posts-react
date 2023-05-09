@@ -26,7 +26,7 @@ export const Posts = () => {
     navigate(`/posts/${routes[newValue]}`);
   };
 
-  return user && user.id ? (
+  return user && user.item.id ? (
     <Fragment>
       <div className={styles.postsList}>
         <Tabs
@@ -40,7 +40,7 @@ export const Posts = () => {
           <Tab label='Others' />
         </Tabs>
         <div className={styles.listContainer}>
-          <Outlet context={[posts, user.id]}/>
+          <Outlet context={[posts, user.item.id]}/>
         </div>
       </div>
     </Fragment>

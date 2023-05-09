@@ -12,7 +12,7 @@ let store: any
 describe('Posts component', () => {
   beforeEach(() => {
     mockStore = configureStore()
-    store = mockStore({ user: {id: 123 }, posts: [] })
+    store = mockStore({ user: { item: {id: 123 } }, posts: [] })
   })
 
 

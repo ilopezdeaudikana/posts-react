@@ -17,12 +17,21 @@ describe('MyPosts component', () => {
   it('should display a post title', async () => {
     render(
       <Provider store={store}>
-        <RenderRouteWithOutletContext context={[[{
-          id: 4,
-          userId: 2,
-          title: 'My title',
-          body: 'Body'
-        }],2]}>
+        <RenderRouteWithOutletContext
+          context={[
+            {
+              list: [
+                {
+                  id: 4,
+                  userId: 2,
+                  title: 'My title',
+                  body: 'Body'
+                }
+              ]
+            },
+            2
+          ]}
+        >
           <MyPosts />
         </RenderRouteWithOutletContext>
       </Provider>
@@ -34,14 +43,22 @@ describe('MyPosts component', () => {
   it('should not display any post title', async () => {
     render(
       <Provider store={store}>
-        <RenderRouteWithOutletContext context={[
-                      [{
-                        id: 4,
-                        userId: 14,
-                        title: 'My title',
-                        body: 'Body'
-                      }], 2]} >
-              <MyPosts />
+        <RenderRouteWithOutletContext
+          context={[
+            {
+              list: [
+                {
+                  id: 4,
+                  userId: 14,
+                  title: 'My title',
+                  body: 'Body'
+                }
+              ]
+            },
+            2
+          ]}
+        >
+          <MyPosts />
         </RenderRouteWithOutletContext>
       </Provider>
     )

@@ -8,13 +8,13 @@ import { PostCard } from '../card/post-card';
 import { useOutletContext } from 'react-router-dom';
 
 export const OthersPosts = () => {
-  const [posts, id] = useOutletContext<[posts: PostFromApi[], id: number ]>()
+  const [posts, id] = useOutletContext<[posts: { list: PostFromApi[] }, id: number ]>()
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(FetchUsers());
   }, [dispatch]);
   const users = useSelector((state: State) => state.users);
-  const list: Post[] = mergeUsersAndPosts(users, posts, id);
+  const list: Post[] = mergeUsersAndPosts(users.list, posts.list, id);
 
   return (
     <Fragment>

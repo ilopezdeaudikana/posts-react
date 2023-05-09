@@ -1,7 +1,7 @@
-import { State, User } from '../models/models';
+import { State, User } from '../models/models'
 
 export const initialState: State = {
-  posts: [],
-  users: [],
-  user: (null as unknown) as User
-};
+  posts: { list: [] },
+  users: { list: [] },
+  user: { item: {} as User }
+}

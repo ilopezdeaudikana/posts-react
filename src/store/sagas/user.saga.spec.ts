@@ -2,7 +2,6 @@ import { runSaga } from 'redux-saga';
 import { fetchUser, fetchUsers } from './user.saga';
 import { User } from '../../models/models';
 
-import { PostsAppActions } from '../actions/actions';
 import * as api from '../../api/api';
 
 describe('fetchUser', () => {
@@ -22,7 +21,7 @@ describe('fetchUser', () => {
 
     expect(requestUser).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([
-      { type: PostsAppActions.SET_USER, payload: user },
+      { type: 'user/setUser', payload: user },
     ]);
     requestUser.mockClear();
   });
@@ -44,7 +43,7 @@ describe('fetchUsers', () => {
 
     expect(usersRequest).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([
-      { type: PostsAppActions.SET_USERS, payload: users },
+      { type: 'users/setUsers', payload: users },
     ]);
     usersRequest.mockClear();
   });
@@ -64,7 +63,7 @@ describe('fetchUsers', () => {
 
     expect(requestUsers).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([
-      { type: PostsAppActions.SET_USERS, payload: [] },
+      { type: 'users/setUsers', payload: [] },
     ]);
     requestUsers.mockClear();
   });

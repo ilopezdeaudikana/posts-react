@@ -1,22 +1,24 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import rootReducer from './reducers/root.reducer';
-import userSaga from './sagas/user.saga';
-import postsSaga from './sagas/posts.saga';
+import postReducer from './slices/posts.slice'
+import userReducer from './slices/user.slice'
+import usersReducer from './slices/users.slice'
+import userSaga from './sagas/user.saga'
+import postsSaga from './sagas/posts.saga'
 
-export const sagaMiddleware = createSagaMiddleware()
-const enhancers = composeWithDevTools(applyMiddleware(sagaMiddleware));
+const sagaMiddleware = createSagaMiddleware()
 
-export const configureStore = (() => {
-  return createStore(
-    rootReducer,
-    enhancers
-  );
+export const store = configureStore({
+  reducer: {
+    posts: postReducer,
+    users: usersReducer,
+    user: userReducer
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware({ thunk: false, serializableCheck: false }).prepend(sagaMiddleware)
+  }
+})
 
-});
+sagaMiddleware.run(postsSaga)
+sagaMiddleware.run(userSaga)
 
-
-export const store = configureStore();
-sagaMiddleware.run(userSaga);
-sagaMiddleware.run(postsSaga);

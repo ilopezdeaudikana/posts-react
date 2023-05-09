@@ -12,7 +12,7 @@ let store: any
 describe('OthersPosts component', () => {
   beforeEach(() => {
     mockStore = configureStore()
-    store = mockStore({ users: [{ id: 1, name: 'text name' }]})
+    store = mockStore({ users: { list: [{ id: 1, name: 'text name' }] } })
   })
 
   it('should display a post username', async () => {
@@ -20,14 +20,16 @@ describe('OthersPosts component', () => {
       <Provider store={store}>
         <RenderRouteWithOutletContext
           context={[
-            [
-              {
-                id: 7,
-                userId: 2,
-                title: 'My title',
-                body: 'Body'
-              }
-            ],
+            {
+              list: [
+                {
+                  id: 7,
+                  userId: 2,
+                  title: 'My title',
+                  body: 'Body'
+                }
+              ]
+            },
             2
           ]}
         >
@@ -44,14 +46,16 @@ describe('OthersPosts component', () => {
       <Provider store={store}>
         <RenderRouteWithOutletContext
           context={[
-            [
-              {
-                id: 7,
-                userId: 1,
-                title: 'My title',
-                body: 'Body'
-              }
-            ],
+            {
+              list: [
+                {
+                  id: 7,
+                  userId: 1,
+                  title: 'My title',
+                  body: 'Body'
+                }
+              ]
+            },
             2
           ]}
         >
@@ -68,14 +72,16 @@ describe('OthersPosts component', () => {
       <Provider store={store}>
         <RenderRouteWithOutletContext
           context={[
-            [
-              {
-                id: 7,
-                userId: 2,
-                title: 'My title',
-                body: 'Body'
-              }
-            ],
+            {
+              list: [
+                {
+                  id: 7,
+                  userId: 2,
+                  title: 'My title',
+                  body: 'Body'
+                }
+              ]
+            },
             2
           ]}
         >

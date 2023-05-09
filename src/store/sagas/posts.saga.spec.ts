@@ -2,7 +2,6 @@ import { runSaga } from 'redux-saga';
 import { fetchPosts, newPost } from './posts.saga';
 import { Post } from '../../models/models';
 
-import { PostsAppActions } from '../actions/actions';
 import * as api from '../../api/api';
 
 describe('fetchPosts', () => {
@@ -21,7 +20,7 @@ describe('fetchPosts', () => {
 
     expect(requestPosts).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([
-      { type: PostsAppActions.SET_POSTS, payload: [post] },
+      { type: 'posts/setPosts', payload: [post] },
     ]);
     requestPosts.mockClear();
   });
@@ -41,7 +40,7 @@ describe('fetchPosts', () => {
 
     expect(requestPosts).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([
-      { type: PostsAppActions.SET_POSTS, payload: [] },
+      { type: 'posts/setPosts', payload: [] },
     ]);
     requestPosts.mockClear();
   });
@@ -63,7 +62,7 @@ describe('createPost', () => {
 
     expect(createPost).toHaveBeenCalledTimes(1);
     expect(dispatched).toEqual([
-      { type: PostsAppActions.SET_NEW_POST, payload: { id: 5, ...post } },
+      { type: 'posts/setNewPost', payload: { id: 5, ...post } },
     ]);
     createPost.mockClear();
   });
